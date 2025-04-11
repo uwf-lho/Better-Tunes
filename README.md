@@ -11,17 +11,8 @@ The team that developed this app are all students in the UWF Capstone 2025 cours
 create, as long as it followed the theme of "X, but for Y." We decided to do "GoodReads, but for music" because we know that, as college students,
 having good music at the ready is an essential, and we wanted a platform where music lovers could make finding good music a little easier.
 
-### Documentation
-- [Doc Repo](https://github.com/UWF-CS-Capston/capstone-project-spring-25-group-4/tree/8105fcf3690e17a759a31246ecf7d5c3110240ee/documentation)
-
-### Demo Links:
-- [Demo 1](https://youtu.be/5FnE-yMR11o)
-- [Demo 2](https://youtu.be/YMgYpYVsTLE)
-
 
 ### How to Run:
-
-NOTICE: MongoDB is blacklisted on UWF WiFi. Without MongoDB, you won't be able to register a new account or login to an existing one.
 
 1. Install Docker Desktop
    - [Windows x64](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module)
