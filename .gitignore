@@ -1,0 +1,15 @@
+node_modules
+.venv
+.idea
+.cache
+dist/
+
+# folders generate bt pytest
+__pycache__/
+.pytest_cache/
+
+# any files that end with .py followed by a single character that is either c, o, or d
+# *.py[cod]
+
+# any files that end with $py.class
+# *$py.class

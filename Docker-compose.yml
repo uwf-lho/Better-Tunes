@@ -1,0 +1,28 @@
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/app
+    networks:
+      - app-network
+
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app:cached        # Mount source code only
+      - /app/node_modules           # Prevent host from overwriting node_modules
+    environment:
+      - API_BASE_URL=http://server:8080
+    depends_on:
+      - server
+    networks:
+      - app-network
+
+networks:
+  app-network:

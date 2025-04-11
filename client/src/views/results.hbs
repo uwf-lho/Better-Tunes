@@ -1,0 +1,128 @@
+<h1>Search Results</h1>
+
+<form method="POST" action="/results" style="display: flex; align-items: center; gap: 5px; border: 1px solid black; padding: 5px; width: fit-content;">
+  
+  <!-- Search Input -->
+  <input type="text" name="search-input" id="search-input" placeholder="..." value="{{search_query}}" style="padding: 5px; border: 1px solid gray;">
+  
+  <!-- Dropdown Menu -->
+  <label for="category" style="margin-left: 5px;">Choose a category:</label>
+
+  <select id="query-type-dropdown" name="query-type-dropdown" style="padding: 5px; border: 1px solid gray;">
+    <option value="artist" {{#if (eq query_type "artist")}}selected{{/if}}>Artist</option>
+    <option value="album" {{#if (eq query_type "album")}}selected{{/if}}>Album</option>
+    <option value="track" {{#if (eq query_type "track")}}selected{{/if}}>Track</option>
+  </select>
+
+  <!-- Search Button -->
+  <button type="submit" style="padding: 5px; border: 1px solid gray; background: white;">🔍</button>
+
+</form>
+
+
+{{#if (eq query_type "artist")}}
+<div class="card-grid-container">
+    {{#each cards}}
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- Front Side -->
+                <div class="flip-card-front">
+                    {{#if artist_image}}
+                        <img src="{{artist_image}}" alt="{{artist_name}}" style="width:190px;height:190px;">
+                        <p>{{artist_name}}</p>
+                    {{else}}
+                        <img src="/music_logo.png" alt="{{artist_name}}" style="width:100px;height:100px;">
+                        <p>{{artist_name}}</p>
+                    {{/if}}
+                </div>
+
+                <!-- Back Side -->
+                <div class="flip-card-back">
+                    <p>{{artist_name}}</p>
+                    <p>{{genres}}</p>
+                    <a href="{{spotify_link}}" target="_blank">Spotify Link</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+{{else if (eq query_type "track")}}
+<div class="card-grid-container">
+    {{#each cards}}
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- Front Side -->
+                <div class="flip-card-front">
+                    {{#if album_image}}
+                        <img src="{{album_image}}" alt="{{name}}" style="width:190px;height:190px;">
+                        <p>{{name}}</p>
+                    {{else}}
+                        <img src="/music_logo.png" alt="{{name}}" style="width:100px;height:100px;">
+                        <p>{{name}}</p>
+                    {{/if}}
+                </div>
+
+                <!-- Back Side -->
+                <div class="flip-card-back">
+                    <p>{{name}}</p>
+                    <p>{{artists}}</p>
+                    <p>{{genres}}</p>
+                    <a href="{{spotify_link}}" target="_blank">Spotify Link</a>
+
+                    <!-- Like/Dislike Buttons -->
+                    <div class="reaction-buttons" data-song-id="{{songId}}">
+                      <button
+                        data-action="like"
+                        onclick="handleReaction('{{songId}}', 'like', '{{../userId}}')"
+                        class="{{#if likedByUser}}like-active-button{{else}}neutral-active-button{{/if}}"
+                      >
+                        <img src="/like.png" alt="<3" />
+                      </button>
+
+                      <button
+                        data-action="dislike"
+                        onclick="handleReaction('{{songId}}', 'dislike', '{{../userId}}')"
+                        class="{{#if dislikedByUser}}dislike-active-button{{else}}neutral-active-button{{/if}}"
+                      >
+                        <img src="/dislike.png" alt="</3" />
+                      </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+{{else if (eq query_type "album")}}
+<div class="card-grid-container">
+    {{#each cards}}
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- Front Side -->
+                <div class="flip-card-front">
+                    {{#if album_image}}
+                        <img src="{{album_image}}" alt="{{album_name}}" style="width:190px;height:190px;">
+                        <p>{{album_name}}</p>
+                    {{else}}
+                        <img src="/music_logo.png" alt="{{album_name}}" style="width:190px;height:190px;">
+                        <p>{{album_name}}</p>
+                    {{/if}}
+                </div>
+
+                <!-- Back Side -->
+                <div class="flip-card-back">
+                    <p>{{album_name}}</p>
+                    <p>{{artist_name}}</p>
+                    <p>{{release_date}}</p>
+                    <p>{{total_tracks}} total tracks</p>
+                    <a href="{{spotify_link}}" target="_blank">Spotify Link</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+{{/if}}

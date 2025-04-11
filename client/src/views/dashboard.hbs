@@ -1,0 +1,17 @@
+<form method="POST" action="/results" style="display: flex; align-items: center; gap: 5px; border: 1px solid black; padding: 5px; width: fit-content;">
+  
+  <!-- Search Input -->
+  <input type="text" name="search-input" id="search-input" placeholder="..." style="padding: 5px; border: 1px solid gray;">
+  
+  <!-- Dropdown Menu -->
+  <label for="category" style="margin-left: 5px;">Choose a category:</label>
+  <select id="query-type-dropdown" name="query-type-dropdown" style="padding: 5px; border: 1px solid gray;">
+      <option value="artist">Artist</option>
+      <option value="album">Album</option>
+      <option value="track">Track</option>
+  </select>
+
+  <!-- Search Button -->
+  <button type="submit" style="padding: 5px; border: 1px solid gray; background: white;">🔍</button>
+
+</form>

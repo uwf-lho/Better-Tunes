@@ -1,0 +1,12 @@
+# Server Settings
+PORT: 8080
+
+# Mongo URI to access our database
+MONGO_URI: "mongodb+srv://backend-bettertunes:MusicMakesMoney4@better-tunes-db.xvyqn.mongodb.net/?retryWrites=true&w=majority&appName=Better-Tunes-DB"
+
+# Security Configurations
+JWT_SECRET_KEY: "HotDogStanleyWithSomeBeans"
+
+# Spotify Credentials
+SPOTIFY_CLIENT_ID: f2529afa4138427c81c678dbcad1065a
+SPOTIFY_CLIENT_SECRET: 847687d5df7a46acbb7cd2fdd178c9e0
